@@ -7,7 +7,7 @@ public class ProductDTO {
     private String description;
     private String category;
     private String image;
-    private RatingDTO rating; // Objeto anidado para rating
+    private RatingDTO rating;
 
     public ProductDTO(Long id, String title, Double price, String description, String category, String image, RatingDTO rating) {
         this.id = id;

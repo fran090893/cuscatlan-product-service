@@ -18,4 +18,11 @@ public class GetProductService {
     public List<Product> getAllProducts() {
         return productRepository.getAllProducts();
     }
+
+    public List<Product> getProductsById(List<Long> ids) {
+        List<Product> products = productRepository.getAllProducts();
+        return products.stream()
+            .filter(product -> ids.contains(product.getId()))
+            .toList();
+    }
 }

@@ -44,4 +44,25 @@ public class GetProductsTest {
             assert(products.get(0).getName().equals("Product 1"));
             assert(products.get(0).getPrice() == 100.0);
     }
+
+    @Test
+    public void getListOfProductsById() {
+        //Arrange
+            List<Product> mockProducts = Arrays.asList(
+                new Product(1L, "Product 1", "Description 1", 100.0,  "Category 1", "image1.jpg"),
+                new Product(2L, "Product 2", "Description 2", 200.0,  "Category 2", "image2.jpg")
+                );
+
+            // Configure the simulated behavior of the ProductApiClient
+            when(productRepository.getAllProducts()).thenReturn(mockProducts);
+
+            List<Long> ids = Arrays.asList(1L, 2L);
+        //Act
+            List<Product> products = getProductService.getProductsById(ids);
+        //Assert
+            assert(products.size() == 2);
+            assert(products.get(0).getId() == 1L);
+            assert(products.get(0).getName().equals("Product 1"));
+            assert(products.get(0).getPrice() == 100.0);
+    }
 }
